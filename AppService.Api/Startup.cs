@@ -26,6 +26,9 @@ namespace AppService.Api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            
+            services.AddServerSideBlazor();//[2]여기 추가
+            services.AddRazorPages();//[2]여기 추가
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -37,6 +40,9 @@ namespace AppService.Api
             }
 
             app.UseHttpsRedirection();
+            app.UseBlazorFrameworkFiles();//[1]여기 추가
+            
+            app.UseStaticFiles(); //[2]여기 추가
 
             app.UseRouting();
 
@@ -44,7 +50,9 @@ namespace AppService.Api
 
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapRazorPages();//[2]여기 추가
                 endpoints.MapControllers();
+                endpoints.MapFallbackToFile("index.html");//[1]여기 추가
             });
         }
     }
