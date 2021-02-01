@@ -1,6 +1,8 @@
-using System;
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
 
-namespace AppService.Api
+namespace AppService.Models
 {
     public class WeatherForecast
     {
