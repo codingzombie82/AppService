@@ -29,6 +29,10 @@ namespace AppService.Api
             
             services.AddServerSideBlazor();//[2]여기 추가
             services.AddRazorPages();//[2]여기 추가
+            
+            //swagger 등록  
+            services.AddSwaggerGen();//Swagger 추가
+            //swagger 등록  
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -38,14 +42,18 @@ namespace AppService.Api
             {
                 app.UseDeveloperExceptionPage();
             }
+            //swagger 등록  
+            app.UseSwagger(); //swagger 등록                             
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
+            });
+            //swagger 등록 
 
             app.UseHttpsRedirection();
-            app.UseBlazorFrameworkFiles();//[1]여기 추가
-            
+            app.UseBlazorFrameworkFiles();//[1]여기 추가            
             app.UseStaticFiles(); //[2]여기 추가
-
             app.UseRouting();
-
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
