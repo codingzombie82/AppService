@@ -2,7 +2,9 @@
 {
     public class IdentityConst
     {
-        public static readonly int MinPasswordLength = 6;
-        public static readonly string AdministratorRole = "Admin";
+        public const int MinPasswordLength = 6;
+        public const string AdministratorRole = "Admin";
+        public const int MinEmailLength = 3;
+        public const int MaxEmailLength = 50;
     }
 }
